@@ -130,13 +130,12 @@ print(sentiment)  # Output: Sentiment(polarity=0.5, subjectivity=0.6)
 #### Detecting and Translating Language
 
 ```python
-import preprocess_jbros as ps
-from googletrans import Translator
+from deep_translator import GoogleTranslator
+from langdetect import detect
 
-translator = Translator()
 text = "Bonjour tout le monde"
-lang = ps.detect_language(text, translator)
-translated_text = ps.translate(text, 'en', translator)
+lang = detect(text)
+translated_text = GoogleTranslator(source=lang, target="en").translate(text)
 print(f"Language: {lang}, Translated: {translated_text}")
 # Output: Language: fr, Translated: Hello everyone
 ```
@@ -180,10 +179,10 @@ Here’s an example of how you might use several functions together to clean tex
 ```python
 import preprocess_jbros as ps
 
-text = "I love NLP! Contact me at jbros2513@gmail.com. Visit https://jbros.com."
-cleaned_text = ps.clean_text(text)
+text = "I'm enjoying NLP! Contact me at jbros2513@gmail.com. Visit https://jbros.com."
+cleaned_text = clean_text(text)
 print(cleaned_text)
-# Output: i am loving this nlp tutorial contact me at visit
+# Output: I be enjoy nlp contact I at   visit
 ```
 
 ### One Short Feature Extraction
