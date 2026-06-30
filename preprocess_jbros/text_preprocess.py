@@ -12,6 +12,8 @@ from spacy.lang.en.stop_words import STOP_WORDS as stopwords
 from langdetect import detect
 from deep_translator import GoogleTranslator
 
+import nltk
+
 fpath = os.path.join(os.path.dirname(__file__), 'data/contractions.json')
 contractions = json.load(open(fpath))
 
@@ -28,6 +30,14 @@ def get_nlp():
                 "python -m spacy download en_core_web_sm"
             )
     return _nlp
+
+def download_nltk_packages():
+    nltk.download('stopwords')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('tagsets')
+    nltk.download('wordnet')
+    nltk.download('maxent_ne_chunker')
+    nltk.download('punkt')
 
 def word_count(x):
     return len(x.split())
